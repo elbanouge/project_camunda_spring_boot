@@ -103,7 +103,7 @@
       <bpmn:outgoing>Flow_0ry1x0o</bpmn:outgoing>
       <bpmn:outgoing>Flow_00472t3</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Activity_1krgjhs" name="vérifier manuellement les documents">
+    <bpmn:userTask id="Activity_1krgjhs" name="vérifier manuellement les documents" camunda:candidateUsers="Client">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="verifierMan" label="Verifier Manuelle" type="boolean" defaultValue="true" />
@@ -117,14 +117,14 @@
       <bpmn:outgoing>Flow_0hy3cbo</bpmn:outgoing>
       <bpmn:outgoing>Flow_0gmsach</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Activity_06497pd" name="Dérouler un entretien client">
+    <bpmn:userTask id="Activity_06497pd" name="Dérouler un entretien client" camunda:candidateUsers="Conseiller">
       <bpmn:incoming>Flow_0wyazj9</bpmn:incoming>
       <bpmn:outgoing>Flow_1aclkz6</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0gmsach" name="Verifier rejete" sourceRef="Gateway_180rx18" targetRef="Activity_0w4c85a">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${verifierMan}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="Activity_0gt21dh" name="Envoyer ses pieces justificatives">
+    <bpmn:userTask id="Activity_0gt21dh" name="Envoyer ses pieces justificatives" camunda:candidateUsers="Client">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="fiabilite" label="Fiabilite" type="long" />
@@ -134,7 +134,13 @@
       <bpmn:incoming>Flow_09k52we</bpmn:incoming>
       <bpmn:outgoing>Flow_1ifj5ua</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Activity_0a8l5oz" name="Saisir OTP et choisir son mot de passe">
+    <bpmn:userTask id="Activity_0a8l5oz" name="Saisir OTP et choisir son mot de passe" camunda:candidateUsers="Client">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="otp" label="Saisir OTP" type="long" />
+          <camunda:formField id="motPass" label="Choisir mot de passe" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1gp7a0n</bpmn:incoming>
       <bpmn:outgoing>Flow_09k52we</bpmn:outgoing>
     </bpmn:userTask>
@@ -145,7 +151,7 @@
     <bpmn:sequenceFlow id="Flow_00472t3" name="degré de fiabilité &#60; 80%" sourceRef="Gateway_0znj7lu" targetRef="Activity_1krgjhs">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${decision=="manual"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="Activity_0wkrj31" name="Donner son avis sur la demande">
+    <bpmn:userTask id="Activity_0wkrj31" name="Donner son avis sur la demande" camunda:candidateUsers="Manger">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="avis" label="Avis" type="string" />
