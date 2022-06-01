@@ -2,7 +2,9 @@ package com.camunda.bpm.workflow.delagate;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins ="*")
 public class VerifierSolvabiliteDelagate implements JavaDelegate {
 
     @Override

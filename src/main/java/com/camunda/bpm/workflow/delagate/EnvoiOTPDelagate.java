@@ -3,7 +3,9 @@ package com.camunda.bpm.workflow.delagate;
 import lombok.extern.log4j.Log4j2;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins ="*")
 @Log4j2
 public class EnvoiOTPDelagate implements JavaDelegate {
 
