@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="credit-project" />
+        <module name="project-camunda" />
       </profile>
     </annotationProcessing>
   </component>
